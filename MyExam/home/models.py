@@ -28,19 +28,15 @@ class Exam(models.Model):
 class Question(models.Model):
     key = models.ForeignKey(Exam, on_delete= models.CASCADE)
     question = models.TextField(default= "")
+    answerA = models.TextField(default= "")
+    answerB = models.TextField(default= "")
+    answerC = models.TextField(default= "")
+    answerD = models.TextField(default= "")
+    corrAns = models.CharField(max_length=1,default="")
 
+    name = "{} | {} | {} | {} | {} | {}"
     def __str__(self):
-        return self.question
-
-class Answer(models.Model):
-    key = models.ForeignKey(Question, on_delete= models.CASCADE)
-    answer = models.TextField(default= "")
-    isCorrect = models.BooleanField(default= False)
-
-    name = "{} | {} | {}"
-
-    def __str__(self):
-        return self.name.format(self.key, self.answer, self.isCorrect)
+        return self.name.format(self.question, self.answerA, self.answerB, self.answerC, self.answerD, self.corrAns)
 
 class Point(models.Model):
     key1 = models.ForeignKey(User, on_delete = models.CASCADE)

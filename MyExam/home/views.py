@@ -15,11 +15,9 @@ def myTest(request):
     return render(request,'home/my-test.html')
 
 def doTest(request, exam_name):
-    exam = Exam.objects.get(examName = exam_name)
-    ques = list(Question.objects.filter(key = exam.id))
-    ans = []
-    for question in ques:
-        ans.append(list(Answer.objects.filter(key = question.id)))
-    # ans = list(Answer.objects.filter(key = ques[0].id))
-    print(ans[0])
-    return render(request,'home/do-test.html')
+    exam = Exam.objects.get(examName = exam_name) #get the exam
+    ques = list(Question.objects.filter(key = exam.id)) #find all of the question related to that exam
+    context = {
+        'question' : ques,
+    }
+    return render(request,'home/do-test.html',context)
