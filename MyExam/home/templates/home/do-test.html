@@ -6,13 +6,13 @@
     {% for ques in question %}
         <h2>{{ques.question}}</h2>
         <form>
-            <input name="answer" type="radio">{{ques.answerA}}<br>
-            <input name="answer" type="radio">{{ques.answerB}}<br>
-            <input name="answer" type="radio">{{ques.answerC}}<br>
-            <input name="answer" type="radio">{{ques.answerD}}<br>
+            <input name="{{ques.question}}" type="radio">{{ques.answerA}}<br>
+            <input name="{{ques.question}}" type="radio">{{ques.answerB}}<br>
+            <input name="{{ques.question}}" type="radio">{{ques.answerC}}<br>
+            <input name="{{ques.question}}" type="radio">{{ques.answerD}}<br>
         </form>
 
     {% endfor %}
-    
+    <button type="submit">Submit</button>
 </div>
 {% endblock %}
